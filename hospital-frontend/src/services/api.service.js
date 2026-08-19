@@ -1,22 +1,24 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080/api',
+    baseURL: 'https://full-stack-1-y55s.onrender.com/api',
     headers: {
         'Content-Type': 'application/json',
     },
 });
 
-// Interceptor to add JWT token to requests
 api.interceptors.request.use(
     (config) => {
         const userStr = localStorage.getItem('user');
+
         if (userStr) {
             const user = JSON.parse(userStr);
+
             if (user.token) {
                 config.headers['Authorization'] = 'Bearer ' + user.token;
             }
         }
+
         return config;
     },
     (error) => {
