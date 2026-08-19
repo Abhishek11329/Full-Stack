@@ -82,34 +82,39 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    CorsConfigurationSource corsConfigurationSource() {
+   @Bean
+CorsConfigurationSource corsConfigurationSource() {
 
-        CorsConfiguration configuration = new CorsConfiguration();
+    CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(List.of(
-                "http://localhost:5173",
-                "http://localhost:5174",
-                "https://hospital-reservation-system-mxt4ykhpm-abhishek-0531.vercel.app"));
-        configuration.setAllowedMethods(List.of(
-                "GET",
-                "POST",
-                "PUT",
-                "DELETE",
-                "OPTIONS",
-                "PATCH"));
+    configuration.setAllowedOrigins(List.of(
+            "http://localhost:5173",
+            "http://localhost:5174",
+            "https://hospital-reservation-system.vercel.app",
+            "https://hospital-reservation-system-mxt4ykhpm-abhishek-0531.vercel.app"
+    ));
 
-        configuration.setAllowedHeaders(List.of(
-                "Authorization",
-                "Cache-Control",
-                "Content-Type"));
+    configuration.setAllowedMethods(List.of(
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE",
+            "OPTIONS",
+            "PATCH"
+    ));
 
-        configuration.setAllowCredentials(true);
+    configuration.setAllowedHeaders(List.of(
+            "Authorization",
+            "Cache-Control",
+            "Content-Type"
+    ));
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    configuration.setAllowCredentials(true);
 
-        source.registerCorsConfiguration("/**", configuration);
+    UrlBasedCorsConfigurationSource source =
+            new UrlBasedCorsConfigurationSource();
 
-        return source;
-    }
+    source.registerCorsConfiguration("/**", configuration);
+
+    return source;
 }
