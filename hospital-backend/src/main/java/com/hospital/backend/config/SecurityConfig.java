@@ -90,7 +90,7 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:5173",
                 "http://localhost:5174",
-                "https://hospital-reservation-system.vercel.app"));
+                "https://hospital-reservation-system-mxt4ykhpm-abhishek-0531.vercel.app"));
         configuration.setAllowedMethods(List.of(
                 "GET",
                 "POST",
